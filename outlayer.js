@@ -841,9 +841,21 @@ Outlayer.prototype.destroy = function() {
   for ( var i=0, len = this.items.length; i < len; i++ ) {
     var item = this.items[i];
     item.destroy();
+
+    // Memory Leak Correction: item references layout, layout references items
+    item.layout = null;
+    //
   }
 
+  // Memory Leak Correction: item references layout, layout references items
+  this.items = [];
+  //
+
   this.unbindResize();
+
+  // Memory Leak Correction: It's necessary to release globally stored instance
+  delete instances[this.element.outlayerGUID];
+  //
 
   delete this.element.outlayerGUID;
   // remove data for jQuery
