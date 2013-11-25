@@ -91,9 +91,10 @@ function Item( element, layout ) {
   this.element = element;
   // parent layout class, i.e. Masonry, Isotope, or Packery
   this.layout = layout;
+
   this.position = {
-    x: 0,
-    y: 0
+    x: element.offsetLeft,
+    y: element.offsetTop
   };
 
   this._create();
@@ -110,9 +111,13 @@ Item.prototype._create = function() {
     onEnd: {}
   };
 
-  this.css({
-    position: 'absolute'
-  });
+  var style = {
+    position: 'absolute',
+    left: this.position.x + 'px',
+    top: this.position.y + 'px'
+  };  
+
+  this.css(style);
 };
 
 // trigger specified handler for event type
