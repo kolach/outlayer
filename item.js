@@ -115,7 +115,7 @@ Item.prototype._create = function() {
     position: 'absolute',
     left: this.position.x + 'px',
     top: this.position.y + 'px'
-  };  
+  };
 
   this.css(style);
 };

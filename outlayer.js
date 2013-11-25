@@ -206,7 +206,8 @@ Outlayer.prototype._itemize = function( elems ) {
 
   // create new Outlayer Items for collection
   var items = [];
-  for ( var i=0, len = itemElems.length; i < len; i++ ) {
+
+  for ( var i=itemElems.length-1; i >= 0; i-- ) {
     var elem = itemElems[i];
     var item = new Item( elem, this );
     items.push( item );
