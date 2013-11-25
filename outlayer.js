@@ -210,7 +210,7 @@ Outlayer.prototype._itemize = function( elems ) {
   for ( var i=itemElems.length-1; i >= 0; i-- ) {
     var elem = itemElems[i];
     var item = new Item( elem, this );
-    items.push( item );
+    items.unshift( item );
   }
 
   return items;
